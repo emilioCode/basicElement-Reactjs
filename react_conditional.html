@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Conditional</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+   
+    <script>
+        function Correct(e){
+            return React.createElement(
+                'h1',
+                null,
+                'It is correct'
+            );
+        }
+
+        function Wrong(e){
+            return React.createElement(
+                'h1',
+                null,
+                'It is wrong'
+            );
+        }
+
+        function Result(e){
+            var condition = e.condition;
+            if(condition){
+                return React.createElement(Correct, null);
+            }
+            return React.createElement(Wrong, null);
+        }
+
+        ReactDOM.render(
+            React.createElement(Result, { condition: (2+2 == 4) }), document.getElementById('container')
+        );
+
+    </script>
+</body>
+</html>

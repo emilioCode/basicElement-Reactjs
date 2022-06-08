@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+   
+    <script>
+
+        var element = React.createElement(
+            'h1',
+            null,
+            'Hello World'
+        );
+
+        ReactDOM.render(element,  document.getElementById('container'));
+  
+    </script>
+</body>
+</html>

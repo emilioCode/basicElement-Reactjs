@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Brands</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+   
+    <script>
+        function Car(car){
+            return React.createElement(
+                "li",
+                null,
+                (car.index+1) + " - Car Brand: ",
+                car.brand
+            );
+        }
+
+        function h3(e){
+            return React.createElement(
+                'h3',
+                null,
+                e.text
+            );
+        }
+        
+        function Output(obj){
+            return React.createElement(
+                "ul",
+                null,
+                React.createElement(h3, { text: obj.title }),
+                obj.list.map((e, index)=>{
+                    return React.createElement(Car, { brand: e, key: e, index: index })
+                })
+            );
+        }
+        var list = ['Toyota', 'Mazda', 'Nissan', 'Hyundai', 'Audi'];
+
+        ReactDOM.render(React.createElement(Output, {list: list, title: 'Car brands'}), document.getElementById('container'));
+    </script>
+</body>
+</html>
