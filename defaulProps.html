@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Default Props</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js" charset="utf-8"></script>
+   
+    <script type="text/babel">
+
+       function Hello({ name }) {
+           name = name != null? name: 'my Friend';
+            return <h2>Hi { name }!</h2>;
+        }
+        
+        ReactDOM.render(
+            <div>
+                <Hello name="Manuel"/>
+                <Hello name="Emilio"/>
+                <Hello />
+            </div>,
+            document.getElementById('container')
+        );
+    </script>
+</body>
+</html>

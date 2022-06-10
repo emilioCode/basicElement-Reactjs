@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disabled Button when empty</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js" charset="utf-8"></script>
+
+    <script type="text/babel">
+        class Hello extends React.Component {
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    name: ''
+                }
+                this.changes = this.changes.bind(this);
+                this.display = this.display.bind(this);
+            }
+
+            changes(e){
+                this.setState({
+                    name: e.target.value
+                })
+            }
+        
+            display(){
+                alert(this.state.name);
+            }
+            
+            render(){
+                return (
+                    <div>
+                        <label>Type you full name:</label>
+                        <br/>
+                        <input type='text' placeholder='type here...' name="name" value={this.state.name} onChange={this.changes}/>
+                        <button disabled={!this.state.name} onClick={this.display}>submit</button>
+                    </div>
+                )
+                
+            }
+        }
+       
+        ReactDOM.render(<Hello />, document.getElementById('container'));
+    </script>
+</body>
+</html>

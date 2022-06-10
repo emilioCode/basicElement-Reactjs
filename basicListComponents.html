@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic List Components</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js" charset="utf-8"></script>
+   
+    <script type="text/babel">
+        
+        class ListComponent extends React.Component{
+            constructor(props){
+                super(props);
+                this.toMap = this.toMap.bind(this);
+                this.state = {
+                    elements: this.toMap(this.props.array)
+                }              
+            }
+
+            toMap(array){
+                var list = array.map(e=>{
+                        return <li key={e}>{ e }</li>
+                    })
+                return list;
+            }
+
+            render(){
+                return <ol>{ this.state.elements }</ol>
+            }        
+        }
+       
+        const list = [ 'C', 'C++', 'C#', 'Java', 'Javascript', 'Python', 'Visual Basic', 'SQL', 'Kotlin', 'Go', 'Swift', 'PHP' ];
+
+        ReactDOM.render(
+            <div>
+                <p>Programming Language</p>
+                <ListComponent array={list}/>
+            </div>,
+            document.getElementById('container')
+        );
+    </script>
+</body>
+</html>

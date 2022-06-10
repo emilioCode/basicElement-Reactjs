@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onChange Event Handling</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js" charset="utf-8"></script>
+   
+    <script type="text/babel">
+
+        class System extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    result: 'Must select an option above.'
+                }
+                this.onChangeHandle = this.onChangeHandle.bind(this);
+            }
+
+            onChangeHandle(e){
+                // console.log(e)
+                // console.log(e.currentTarget)
+                // console.log(e.currentTarget.value)
+                const value = e.currentTarget.value;
+                var res = '';
+                switch (value) {
+                    case 'win':
+                        res = 'Your choose is Window.';
+                        break;
+                    case 'unix':
+                        res = 'Your choose is Unix.';
+                        break;
+                    case 'linux':
+                        res = "Your choose is a Linux's distribution.";
+                        break;
+                    case 'macos':
+                        res = 'Your choose is Mac OS.';
+                        break;
+                    default:
+                        res = '';
+                        break;
+                }
+
+                this.setState({
+                    result: res
+                });
+            }
+
+            render(){
+                return(
+                    <div>
+                        <div>
+                            <fieldset>
+                                <legend>Choose an Operating System:</legend>
+                                <div>
+                                    <input type="radio" id="Win" name="operating_system" value="win" onChange={this.onChangeHandle}/>
+                                    <label htmlFor="Win">Windows</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="MacOs" name="operating_system" value="macos" onChange={this.onChangeHandle}/>
+                                    <label htmlFor="MacOs">Mac OS</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Ubuntu" name="operating_system" value="linux" onChange={this.onChangeHandle}/>
+                                    <label htmlFor="Ubuntu">Ubuntu</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <p>
+                            { this.state.result }
+                        </p>
+                    </div>
+                )
+            }
+
+        }
+        
+        ReactDOM.render(
+            <System />,
+            document.getElementById('container')
+        );
+    </script>
+</body>
+</html>
